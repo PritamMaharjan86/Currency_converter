@@ -13,6 +13,8 @@ export default {
 
     }, fontFamily: {
       chakra: ['"Chakra Petch"', 'sans-serif'],
+      blank: ['blank'],
+      nunito: ['"Nunito"', 'sans-serif'],
     },
 
   },
