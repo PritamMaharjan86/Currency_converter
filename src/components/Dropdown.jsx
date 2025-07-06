@@ -14,39 +14,31 @@ const currencyCodes = [
   "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLE", "SLL", "SOS", "SRD",
   "SSP", "STN", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY",
   "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VES",
-  "VND", "VUV", "WST", "XAF", "XCD", "XPF", "YER", "ZAR", "ZMW",
-  "ZWL", ""
+  "VND", "VUV", "WST", "XAF", "XCD", "XPF", "YER", "ZAR", "ZMW", "ZWL"
 ];
 
-
-const CurrenciesDropdown = ({
-  currency,
-  setCurrency,
-  title = "",
-}) => {
-
-  const countryCode = currency.substring(0,2);
+const CurrenciesDropdown = ({ currency, setCurrency, title = "" }) => {
+  const countryCode = currency.slice(0, 2); 
 
   return (
-    <div>
-      <label htmlFor={title}>{title}</label>
-      <img src={`https://flagsapi.com/${countryCode}/flat/64.png` }alt="Flag" />
-      <div>
-        <select
-          value={currency}
-          onChange={(e) => setCurrency(e.target.value)}
-          className="block w-25 h-full px-4 py-2 font-chakra "
-        >
-          
-          {currencyCodes.map((currency) => {
-            return (
-              <option value={currency} key={currency}>
-                {currency}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+    <div className="flex flex-col space-y-2 justify-center items-center">
+      {title && <label htmlFor={title} className="font-medium">{title}</label>}
+
+      <img
+        src={`https://flagsapi.com/${countryCode}/flat/64.png`}
+        alt={`${currency} flag`}
+        className="w-10 h-10 object-cover justify-center items-center"
+      />
+
+      <select
+        value={currency}
+        onChange={(e) => setCurrency(e.target.value)}
+        className="w-32 p-2 rounded-md border text-sm font-blank bg-white shadow-sm"
+      >
+        {currencyCodes.map((code) => (
+          <option key={code} value={code}>{code}</option>
+        ))}
+      </select>
     </div>
   );
 };

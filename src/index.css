@@ -10,3 +10,7 @@ body {
     font-family: 'Roboto', sans-serif;
   }
   
+  @font-face {
+  font-family: "blank";
+  src: url("../src/fonts/KGBlankSpaceSolid.ttf");
+}
